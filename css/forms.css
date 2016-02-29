@@ -1,0 +1,84 @@
+html{
+    font-family: arial, helvetica, sans-serif;
+    font-weight: bold; 
+}
+
+.lg-form input[type=text]{
+    width: 302px;
+    height: 30px;
+    border-radius: 0px;
+    background-color: #fff;
+}
+
+input[type=text] {
+    width: 200px;
+    height: 30px;
+    border-radius: 0px;
+    background-color: #fff;
+    margin-bottom: 5px;
+
+}
+
+#getInfo input[type=text] {
+
+    width: 200px;
+    height: 30px;
+    border-radius: 0px;
+    background-color: #fff;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+select{
+    line-height: 20px;
+    width: 100px;
+    height: 30px;
+    border: 1px solid black;
+    -webkit-border-radius: 0px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    font-size: 12px;
+    font-family: arial, helvetica, sans-serif;
+    font-weight: bold;
+    color: #000000;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
+    text-decoration: none;
+    display: inline-block;
+    padding: 5px 15px 5px 15px;
+
+    background-color: #f4f5f5;
+    background: url(1456191668_icon-arrow-down-b.png) no-repeat right #ddd;
+    background-size: 15px 15px;
+ }
+
+select:hover {
+
+     cursor: pointer;
+     border:1px solid #7A7A7A;
+     background-color: #d9dddd;
+     background: url(1456191668_icon-arrow-down-b.png) no-repeat 15px right;
+     background-size: 15px 15px;
+
+
+ }
+
+.hideNshow {
+    display: none;
+
+}
+
+button {
+    color: #fff; 
+    background-color: #5bc0de;
+    border: 1px solid #46b8da;
+    display: inline-block;
+    width: 30em;
+    height: 30px;
+}
+
+button:hover {
+    background-color: #31b0d5;
+    border-color: #269abc;
+
+}

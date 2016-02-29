@@ -1,0 +1,107 @@
+/**
+ * Extra large button extension. Extends '.btn'
+ */
+.row-bottom-space{
+    margin-bottom: 5px;
+}
+.row-top-space{
+
+    margin-top: 5px;
+}
+.btn-xlarge{
+    padding: 18px 28px;
+    font-size: 22px;
+    line-height: normal;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+}
+
+.btn-xxlarge{
+    padding: 30px 40px;
+    font-size: 30px;
+    width: 240px;
+    height: 100px;
+    line-height: normal;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
+/** http://codepen.io/Grawl/pen/DovAI/ */
+.hover-zoom {
+    float: left;
+    margin: 0;
+    height: 180px;
+    width: 300px;
+    -webkit-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    background-size: 110%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: gray;
+    position: relative;
+  }
+  .hover-zoom:hover {
+      background-size: 100%;
+}
+/** end */
+
+  .back-img{
+      background-image: url("siege_craft_by_hamsterfly-d8y0eh8");
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: middle;
+      border: 2px solid #5bc0de;
+      margin-left: 145px;
+      height: 619px;
+      width: 1000px;
+}
+
+/*http://www.w3schools.com/css/css_navbar.asp*/
+#navbar_design ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #5bc0de;
+    position: fixed;
+    top: 1;
+    z-index: 9;
+    width: 100%;
+}
+
+#navbar_design ul li {
+    float: left;
+}
+
+
+#underline-remover a {
+    display: inline-block; 
+    color: white;
+    text-align: center;
+    text-decoration:none;
+    padding: 14px 16px;
+    border-right: 1px solid white;
+    line-height: 22px;
+}
+
+
+#navbar_design li a:hover:not(.active) {
+    color: #5bc0de;
+    background-color: white;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+/** end? */
+
+/*for row selection*/
+td {border: 1px #DDD solid; padding: 5px; cursor: pointer;}
+
+
+.selected {
+    background-color: brown;
+    color: #FFF;
+}

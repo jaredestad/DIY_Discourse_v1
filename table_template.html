@@ -1,0 +1,18 @@
+<table id ="comments_table" class='table-striped table-bordered'>
+    <thead>
+        <th>id</th>
+        <th>Author</th>
+        <th>Subreddit</th>
+        <th>Body</th>
+    </thead>
+
+    {{#my_table}}
+    <tr>
+        <td>{{{id}}}</td>
+        <td class="author_column">{{{author}}}</td>
+        <td>{{{subreddit}}}</td>
+        <td>{{{body}}}</td>
+    </tr>
+    {{/my_table}}
+</table>
+
