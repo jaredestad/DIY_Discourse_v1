@@ -91,14 +91,14 @@ $(document).ready(function() {
         console.log("starting ajax");
         $.ajax({
             type : "POST",
-            url : "./get_text.php",
-            data : { subreddit : $("#subreddit").val() },
-           //data : { keyword_data : $str, feature_data : $str2, numerical_data : $str3 },
+            url : "./search_engine.php",
+            data : { keyword_data : $str, feature_data : $str2, numerical_data : $str3 },
             async: false,
+            dataType : "text",
 
             success : function(data) {
             $("#results4").val(data);
-            alert("data = " + data);
+            console.log(data);
             },
 
 
