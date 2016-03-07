@@ -39,12 +39,12 @@
             </div>
         </div>
 
-        <div class="well">
+        <div class="well" style="position: fixed; width: 100%; margin-top: -20px;">
 
             <!-- Section 1 -->
 
             <div class="row">
-                <div class="col-md-5 well">
+                <div class="col-md-5">
                     <form id="getInfo">
 
                         <div class="showStarter">
@@ -174,10 +174,10 @@
                 </div><!--end section 1 div-->
 
                 <!-- Section 2 -->
-                <div class="col-md-7 well">
+                <div class="col-md-7">
 
                     <!-- special form data section -->
-                    <span style="margin-left: 250px;">Specialized Data</span>
+                    <span style="margin-left: 250px; font-weight: bold;">Specialized Data</span>
                     <br>
 
                     <form id="getInfo2">
@@ -201,31 +201,27 @@
                     </form>
                     <!-- special form data end -->
 
-                    <p><tt id="results"></tt></p>
-                    <p><tt id="results2"></tt></p>
-                    <p><tt id="results3"></tt></p>
-                    <textarea id="results4"></textarea>
                     <!-- numerical data start -->
-                        <span style="margin-left: 250px;">Numerical Data</span>
-                        <form id="getInfo3">
+                    <span style="margin-left: 250px; font-weight: bold;">Numerical Data</span>
+                    <form id="getInfo3">
 
-                            <div id="dates" class="form-inline lg-form">
-                                <input type="text" class="clear-form"  name="retrieved_on" placeholder="Retrieved On" id="retrieved_on">
-                                <input type="text" class="clear-form" name="created_utc" placeholder="Created UTC" id="created_utc">
-                            </div>
+                        <div id="dates" class="form-inline lg-form">
+                            <input type="text" class="clear-form"  name="retrieved_on" placeholder="Retrieved On" id="retrieved_on">
+                            <input type="text" class="clear-form" name="created_utc" placeholder="Created UTC" id="created_utc">
+                        </div>
 
-                            <div id="scores" class="form-inline">
-                                <input type="text" class="clear-form" name="ups" placeholder="Ups" id="ups">
-                                <input type="text" class="clear-form" name="downs" placeholder="Downs" id="downs">
-                                <input type="text" class="clear-form" name="score" placeholder="Score" id="score">
-                            </div>
+                        <div id="scores" class="form-inline">
+                            <input type="text" class="clear-form" name="ups" placeholder="Ups" id="ups">
+                            <input type="text" class="clear-form" name="downs" placeholder="Downs" id="downs">
+                            <input type="text" class="clear-form" name="score" placeholder="Score" id="score">
+                        </div>
 
-                            <div id="features" class="form-inline lg-form">
-                                <input type="text" class="clear-form" name="gilded" placeholder="Gilded" id="gilded">
-                                <input type="text" class="clear-form" name="controversiality" placeholder="Controversiality" id="controversiality">
-                            </div>
-                        </form>
-                        <!-- numerical data end -->
+                        <div id="features" class="form-inline lg-form">
+                            <input type="text" class="clear-form" name="gilded" placeholder="Gilded" id="gilded">
+                            <input type="text" class="clear-form" name="controversiality" placeholder="Controversiality" id="controversiality">
+                        </div>
+                    </form>
+                    <!-- numerical data end -->
 
                 </div>
 
@@ -238,7 +234,7 @@
 
 
 
-            <div class="well row">
+            <div class="row">
                 <div style="width: 61em; margin-left: auto; margin-right: auto;">
                     <button id="search_button2">Search</button>
                     <button id="clear_button">Clear</button>
@@ -251,9 +247,11 @@
 
 
 
+        <div>
+            <table id="comments_table2" class='table-striped table-bordered' style="margin-top: 345px;">
+            </table>
+        </div>
 
-        <table id="comments_table" class='table-striped table-bordered'>
-        </table>
 
     </body>
 </html>

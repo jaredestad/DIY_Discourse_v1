@@ -6,15 +6,15 @@ $(document).ready(function() {
     $("#addfield").click(function(){
         if($startFact == false){
             $startFact = true;
-           $currentDiv = $(".showStarter").next(".hideNshow"); 
-           $currentDiv.show();
+            $currentDiv = $(".showStarter").next(".hideNshow"); 
+            $currentDiv.show();
         }
         else{
 
-                $currentDiv = $currentDiv.next(".hideNshow");
-                $currentDiv.show();
-                if( !$currentDiv.next(".hideNshow").length)
-                    $("#addfield").hide();
+            $currentDiv = $currentDiv.next(".hideNshow");
+            $currentDiv.show();
+            if( !$currentDiv.next(".hideNshow").length)
+        $("#addfield").hide();
         }
     });
 
@@ -84,21 +84,50 @@ $(document).ready(function() {
         console.log($str);
         console.log($str2);
         console.log($str3);
-        $("#results").text($str);
-        $("#results2").text($str2);
-        $("#results3").text($str3);
 
         console.log("starting ajax");
         $.ajax({
             type : "POST",
             url : "./search_engine.php",
             data : { keyword_data : $str, feature_data : $str2, numerical_data : $str3 },
-            async: false,
             dataType : "text",
 
-            success : function(data) {
-            $("#results4").val(data);
-            console.log(data);
+            success : function(result) {
+                console.log(result);
+                console.log(result.table_text);
+                $("#comments_table2").html(result.table_text);
+
+                $(".saver").hide();
+                $(".tags_box").attr("disabled", true);
+                $(".edit_button").click(function() {
+                    $(this).hide();
+                    $(this).next(".saver").show();
+                    $(this).next(".saver").next(".tags_box").removeProp("disabled");
+                    console.log( $(this).next(".saver").next(".tags_box") );
+                    console.log( $(this).next(".saver") );
+                });
+
+                $(".save_button").click(function() {
+                    var id_value = $(this).closest("tr").find("td:first").text();
+                    var tag_area = $.trim($(this).closest(".tags_box").val());
+
+                    var g_area = $(this).closest(".tags_box").tagName;
+                    console.log(tag_area);
+                    alert(g_area);
+                    alert(tag_area);
+                    alert(id_value);
+
+
+                });
+
+                $(".saver").click(function() {
+                    $(this).hide();
+                    $(this).prev(".edit_button").show();
+                    $(this).next(".tags_box").attr("disabled", true);
+                    console.log( $(this).next(".tags_box") );
+                });
+
+
             },
 
 
@@ -108,7 +137,7 @@ $(document).ready(function() {
                         console.log("error jqXHR: " + jqXHR);
                         console.log("error textStatus: " + textStatus);
                     }
-            });
+        });
     });
 
 
@@ -131,6 +160,8 @@ $(document).ready(function() {
 
                 $("#comments_table tr").click(function(){
                     $(this).addClass('selected').siblings().removeClass('selected');
+                    var value2 = $(this)[0].nodeName;
+                    alert(value2);
                     var value=$(this).find('td:first').html();
                     alert(value);
                 });

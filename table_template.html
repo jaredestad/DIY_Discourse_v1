@@ -1,17 +1,53 @@
 <table id ="comments_table" class='table-striped table-bordered'>
     <thead>
-        <th>id</th>
-        <th>Author</th>
-        <th>Subreddit</th>
-        <th>Body</th>
+        <th class="comment_id_column">Comment ID</th>
+        <th class="author_column">Author</th>
+        <th class="subreddit_column">Subreddit</th>
+        <th class="body_column">Body</th>
+        <th class="subreddit_id_column">Subredit ID</th>
+        <th class="parent_id_column">Parent ID</th>
+        <th class="link_id_column">Link ID</th>
+        <th class="name_column">Name</th>
+        <th class="author_flair_text_column">Author Flair Text</th>
+        <th class="author_flair_css_class_column">Author Flair CSS Class</th>
+        <th class="retrieved_on_column">Retrieved On</th>
+        <th class="created_utc_column">Created UTC</th>
+        <th class="ups_column">Ups</th>
+        <th class="downs_column">Downs</th>
+        <th class="score_column">Score</th>
+        <th class="gilded_column">Gilded</th>
+        <th class="controversiality_column">Controversiality</th>
+        <th class="tags_column">Tags</th>
     </thead>
 
     {{#my_table}}
     <tr>
-        <td>{{{id}}}</td>
+        <td class="comment_id_column">{{{id}}}</td>
         <td class="author_column">{{{author}}}</td>
-        <td>{{{subreddit}}}</td>
-        <td>{{{body}}}</td>
+        <td class="subreddit_column">{{{subreddit}}}</td>
+        <td class="body_column">{{{body}}}</td>
+        <td class="subreddit_id_column">{{{subreddit_id}}}</td>
+        <td class="parent_id_column">{{{parent_id}}}</td>
+        <td class="link_id_column">{{{link_id}}}</td>
+        <td class="name_column">{{{name}}}</td>
+        <td class="author_flair_text_column">{{{author_flair_text}}}</td>
+        <td class="author_flair_css_class_column">{{{author_flair_css_class}}}</td>
+        <td class="retrieved_on_column">{{{retrieved_on}}}</td>
+        <td class="created_utc_column">{{{created_utc}}}</td>
+        <td class="ups_column">{{{ups}}}</td>
+        <td class="downs_column">{{{downs}}}</td>
+        <td class="score_column">{{{score}}}</td>
+        <td class="gilded_column">{{{gilded}}}</td>
+        <td class="controversiality_column">{{{controversiality}}}</td>
+
+        <td class="tags_column">
+            <button class="edit_button" style="width: 142px; margin-bottom: 5px;">Edit</button>
+            <div class="saver" style="margin-bottom: 5px;">
+                <button class="save_button" style="width: 100px; float: left;">Save</button>
+                <button class="cancel_button" style="width: 42px;"><i class="glyphicon glyphicon-remove"></i></button>
+            </div>
+                <textarea class="tags_box" id="tag" rows="3">{{{id}}}</textarea>
+        </td>
     </tr>
     {{/my_table}}
 </table>
