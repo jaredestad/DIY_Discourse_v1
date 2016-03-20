@@ -11,16 +11,13 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <!-- js file -->
         <script src='./js/button_js.js'></script>
-        <script src='./js/table_js.js'></script>
-        <script src='./js/ElmahdiMahmoud.js'></script>
-        <script src='./js/checkbox.js'></script>
+        <script src="./js/checkbox_js.js"></script>
 
 
         <!-- custom css file -->
         <link href="css/bootstrap-extension.css" rel="stylesheet">
-        <link href="css/body-ext.css" rel="stylesheet">
-        <link href="css/dropbtn.css" rel="stylesheet">
         <link href="css/forms.css" rel="stylesheet">
+        <link href="css/dropdown.css" rel="stylesheet">
 
         <!-- Latest compiled and minified JavaScript -->
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -39,9 +36,21 @@
             </div>
         </div>
 
-        <div class="well" style="position: fixed; width: 100%; margin-top: -20px;">
+
+            <div class="row">
+                <div style="width: 420px; margin-left: auto; margin-right: auto;">
+                    <button id="show_searchfields">Show Search Fields</button>
+                </div>
+            </div>
+
+        <div id="searchfields" class="well" style="position: fixed; width: 100%; margin-top: -20px;">
 
             <!-- Section 1 -->
+            <div class="row">
+                <div style="width: 420px; margin-left: auto; margin-right: auto; margin-bottom: 10px;">
+                    <button id="hide_searchfields">Hide Search Fields</button>
+                </div>
+            </div>
 
             <div class="row">
                 <div class="col-md-5">
@@ -171,6 +180,44 @@
                     <button id="addfield">Add Field</button>
 
 
+                    <div style="margin-top: 5px;">
+                    <dl class="dropdown">
+                        <dt id="firstdt"><a href="#" id="options_selector"><span id="s_options">Select display options</span></a></dt>
+
+                        <dd>
+                            <ul>
+
+                                <li><label>
+                                    <input type="checkbox" value="ID" id="comment_id_column" >ID
+                                </label></li>
+
+                                <li><label><input type="checkbox" value="Author" id="author_column" checked>Author</label></li>
+
+                                <li><label><input type="checkbox" value="Subreddit" id="subreddit_column" checked>Subreddit</label></li>
+
+                                <li><label><input type="checkbox" value="Body" id="body_column" checked>Body</label></li>
+                                <li><label><input type="checkbox" value="Subreddit ID" id="subreddit_id_column">Subreddit ID</label></li>
+                                <li><label><input type="checkbox" value="Parent ID" id="parent_id_column">Parent ID</label></li>
+                                <li><label><input type="checkbox" value="Link ID" id="link_id_column">Link ID</label></li>
+                                <li><label><input type="checkbox" value="Name" id="name_column">Name</label></li>
+                                <li><label><input type="checkbox" value="Author Flair Text" id="author_flair_text_column">Author Flair Text</label></li>
+                                <li><label><input type="checkbox" value="Author Flair CSS Class" id="author_flair_css_class_column">Author Flair CSS Class</label></li>
+                                <li><label><input type="checkbox" value="Retrieved On" id="retrieved_on_column">Retrieved On</label></li>
+                                <li><label><input type="checkbox" value="Created UTC" id="created_utc_column">Created UTC</label></li>
+                                <li><label><input type="checkbox" value="Ups" id="ups_column">Ups</label></li>
+                                <li><label><input type="checkbox" value="Downs" id="downs_column">Downs</label></li>
+                                <li><label><input type="checkbox" value="Score" id="score_column">Score</label></li>
+                                <li><label><input type="checkbox" value="Gilded" id="gilded_column">Gilded</label></li>
+                                <li><label><input type="checkbox" value="Controversiality" id="controversiality_column">Controversiality</label></li>
+                                <li><label><input type="checkbox" value="Row ID" id="row_id_column">Row ID</label></li>
+                                <li><label><input type="checkbox" value="Tags" id="tags_column">Tags</label></li>
+
+                            </ul>
+
+                        </dd>
+                    </dl>
+                </div>
+
                 </div><!--end section 1 div-->
 
                 <!-- Section 2 -->
@@ -241,9 +288,11 @@
                 </div>
             </div>
 
-
         </div>
 
+        <div class="row" style="position: fixed; margin-top: 550px;">
+            <button id="to_top" style="width: 100px;">To Top</button>
+        </div>
 
 
 
@@ -252,6 +301,12 @@
             </table>
         </div>
 
+        <div class="row well" id="loader_section">
+            <div style="width: 30em; margin-left: auto; margin-right: auto;">
+                <button id="load_button">Load More</button>
+            </div>
+        </div>
+        
 
     </body>
 </html>

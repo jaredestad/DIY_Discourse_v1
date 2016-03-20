@@ -13,6 +13,7 @@
         die('Could not connect' . mysql_error());
     }
     
+    $load_counter = $_POST['load_counter'];
     //keyword data from ajax
     $str_keyword = $_POST['keyword_data'];
     //print_r($str_keyword);
@@ -80,7 +81,7 @@
             }
             else
             {
-                    $sql .= " body LIKE '% " . mysql_real_escape_string( $keyword_array[$x+1] ) . " %'";
+                    $sql .= " body LIKE '%" . mysql_real_escape_string( $keyword_array[$x+1] ) . "%'";
             }
             
             
@@ -143,7 +144,6 @@
         
     }
     
-    
     for($x = 0; $x < count($numerical_array); $x++)
     {
         if($numerical_array[$x] != "")
@@ -154,39 +154,39 @@
             
             if($x == 0)
             {
-                $sql .= " retrieved_on = '" . mysql_real_escape_string( $feature_array[$x] ) . "'";
+                $sql .= " retrieved_on = '" . mysql_real_escape_string( $numerical_array[$x] ) . "'";
             }
             else if($x == 1)
             {
-                $sql .= " created_utc = '" . mysql_real_escape_string( $feature_array[$x] ) . "'";
+                $sql .= " created_utc = '" . mysql_real_escape_string( $numerical_array[$x] ) . "'";
             }
             else if($x == 2)
             {
-                $sql .= " ups = '" . mysql_real_escape_string( $feature_array[$x] ) . "'";
+                $sql .= " ups = '" . mysql_real_escape_string( $numerical_array[$x] ) . "'";
             }
             else if($x == 3)
             {
-                $sql .= " downs = '" . mysql_real_escape_string( $feature_array[$x] ) . "'";
+                $sql .= " downs = '" . mysql_real_escape_string( $numerical_array[$x] ) . "'";
             }
             else if($x == 4)
             {
-                $sql .= " score = '" . mysql_real_escape_string( $feature_array[$x] ) . "'";
+                $sql .= " score = '" . mysql_real_escape_string( $numerical_array[$x] ) . "'";
             }
             else if($x == 5)
             {
-                $sql .= " gilded = '" . mysql_real_escape_string( $feature_array[$x] ) . "'";
+                $sql .= " gilded = '" . mysql_real_escape_string( $numerical_array[$x] ) . "'";
             }
             else if($x == 6)
             {
-                $sql .= " controversiality = '" . mysql_real_escape_string( $feature_array[$x] ) . "'";
+                $sql .= " controversiality = '" . mysql_real_escape_string( $numerical_array[$x] ) . "'";
             }
         }
         
     }
     
+    $load_number = 100*$load_counter;
     
-    
-    $sql .= " LIMIT 100;";
+    $sql .= " LIMIT " . $load_number . ";";
     
     //echo $sql . "\n";
     
@@ -200,24 +200,24 @@
     if(! $result) {
         die('Could not work: ' . mysql_error());
     }
-    print_r($result);
-    echo $result;
     
     $template_array = array();
     $num = 0;
     while(($row = mysql_fetch_assoc($result)) != null)
     {
+        $row["count"] = "row_id_" . $num;
+        //print_r($row);
         $num++;
         
         $template_array['my_table'][] = $row;
-        print_r($template_array);
+        
     }
     
     $template_contents = file_get_contents("table_template.html");
     $response = array();
     
     $response['table_text'] = $m->render($template_contents, $template_array);
-    //echo json_encode($response);
+    echo json_encode($response);
     
     mysql_close($conn);
     

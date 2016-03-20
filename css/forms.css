@@ -1,5 +1,3 @@
-html{
-}
 
 .lg-form input[type=text]{
     width: 302px;
@@ -46,8 +44,7 @@ select{
     padding: 5px 15px 5px 15px;
 
     background-color: #f4f5f5;
-    background: url(1456191668_icon-arrow-down-b.png) no-repeat right #ddd;
-    background-size: 15px 15px;
+    background: url("arrow4.png") no-repeat right #ddd;
  }
 
 select:hover {
@@ -55,8 +52,7 @@ select:hover {
      cursor: pointer;
      border:1px solid #7A7A7A;
      background-color: #d9dddd;
-     background: url(1456191668_icon-arrow-down-b.png) no-repeat 15px right;
-     background-size: 15px 15px;
+     background: url("arrow4.png") no-repeat 15px right;
 
 
  }

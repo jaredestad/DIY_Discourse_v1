@@ -1,0 +1,68 @@
+.dropdown dt a{
+    margin-bottom: 5px;
+    background-color: #5bc0de;
+    border: 1px solid #46b8da;
+    padding: 0px 20px 0px 5px;
+    display: block;
+    width: 200px;
+    max-height: 200px;
+    height: 25px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: normal;
+}
+
+.dropdown dt a#options_selector {
+   background: #5bc0de url("arrow4.png") no-repeat right;
+   text-decoration: none;
+   color: #fff;
+}
+
+.toShow span {
+    display: inline-block;
+    padding: 0 3px 2px 0;
+
+}
+
+.dropdown{
+   width: 200px; 
+}
+
+.dropdown dt:hover, .dropdown dt a#options_selector:hover, .dropdown dt a:hover {
+   cursor: pointer;
+   text-decoration: none;
+   background-color: #31b0d5;
+   border-color: #269abc; 
+}
+
+.dropdown dd ul {
+    padding: 2px;
+    width: 200px;
+    height: 300px;
+    border: 1px solid #46b8da;
+    background-color: #5bc0de;
+    list-style: none;
+    color: #fff;
+    display: none;
+    position: absolute;
+    overflow-y: auto;
+    z-index: 8;
+}
+
+.dropdown dd ul li label input {
+    margin-right: 5px;
+    padding-top: 5px;
+    cursor: pointer;
+}
+
+.dropdown dd ul li label {
+    cursor: pointer;
+    width: 100%;
+    font-weight: normal;
+
+}
+
+.dropdown dd ul li:hover {
+   background-color: #31b0d5;
+  border-color: #269abc; 
+}

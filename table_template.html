@@ -17,6 +17,7 @@
         <th class="score_column">Score</th>
         <th class="gilded_column">Gilded</th>
         <th class="controversiality_column">Controversiality</th>
+        <th class="row_id_column">Row ID</th>
         <th class="tags_column">Tags</th>
     </thead>
 
@@ -39,6 +40,7 @@
         <td class="score_column">{{{score}}}</td>
         <td class="gilded_column">{{{gilded}}}</td>
         <td class="controversiality_column">{{{controversiality}}}</td>
+        <td class="row_id_column">{{{count}}}</td>
 
         <td class="tags_column">
             <button class="edit_button" style="width: 142px; margin-bottom: 5px;">Edit</button>
@@ -46,7 +48,7 @@
                 <button class="save_button" style="width: 100px; float: left;">Save</button>
                 <button class="cancel_button" style="width: 42px;"><i class="glyphicon glyphicon-remove"></i></button>
             </div>
-                <textarea class="tags_box" id="tag" rows="3">{{{id}}}</textarea>
+            <textarea class="tags_box" id="{{{count}}}" rows="3">{{{tags}}}</textarea>
         </td>
     </tr>
     {{/my_table}}
