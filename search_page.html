@@ -7,6 +7,7 @@
         <meta charset="utf-8">
         <!-- css for bootstrap -->
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         <!-- jQuery (required by Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <!-- js file -->
@@ -37,7 +38,7 @@
         </div>
 
 
-            <div class="row">
+            <div class="row" style="left: 445px; position: absolute;" id="fieldholder">
                 <div style="width: 420px; margin-left: auto; margin-right: auto;">
                     <button id="show_searchfields">Show Search Fields</button>
                 </div>
@@ -68,6 +69,7 @@
                             <select id="type1" name="type1">
                                 <option value="Keyword">Keyword</option>
                                 <option value="Substring">Substring</option>
+                                <option value="Tag">Tag</option>
                             </select>
 
                         </div>
@@ -86,6 +88,7 @@
                             <select id="type2" name="type2">
                                 <option value="Keyword">Keyword</option>
                                 <option value="Substring">Substring</option>
+                                <option value="Tag">Tag</option>
                             </select>
 
                         </div>
@@ -103,6 +106,7 @@
                             <select id="type3" name="type3">
                                 <option value="Keyword">Keyword</option>
                                 <option value="Substring">Substring</option>
+                                <option value="Tag">Tag</option>
                             </select>
 
                         </div>
@@ -120,6 +124,7 @@
                             <select id="type4" name="type4">
                                 <option value="Keyword">Keyword</option>
                                 <option value="Substring">Substring</option>
+                                <option value="Tag">Tag</option>
                             </select>
 
                         </div>
@@ -137,6 +142,7 @@
                             <select id="type5" name="type5">
                                 <option value="Keyword">Keyword</option>
                                 <option value="Substring">Substring</option>
+                                <option value="Tag">Tag</option>
                             </select>
 
                         </div>
@@ -155,6 +161,7 @@
                             <select id="type6" name="type6">
                                 <option value="Keyword">Keyword</option>
                                 <option value="Substring">Substring</option>
+                                <option value="Tag">Tag</option>
                             </select>
 
                         </div>
@@ -173,6 +180,7 @@
                             <select id="type7" name="type7">
                                 <option value="Keyword">Keyword</option>
                                 <option value="Substring">Substring</option>
+                                <option value="Tag">Tag</option>
                             </select>
 
                         </div><!--end search forms-->
@@ -283,27 +291,27 @@
 
             <div class="row">
                 <div style="width: 61em; margin-left: auto; margin-right: auto;">
-                    <button id="search_button2">Search</button>
+                    <button id="search_button2" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Loading">Search</button>
                     <button id="clear_button">Clear</button>
                 </div>
             </div>
 
         </div>
 
-        <div class="row" style="position: fixed; margin-top: 550px;">
+        <div class="row" id="toTop" style="left: -100px; position: fixed; margin-top: 550px;">
             <button id="to_top" style="width: 100px;">To Top</button>
         </div>
 
 
 
-        <div>
-            <table id="comments_table2" class='table-striped table-bordered' style="margin-top: 345px;">
+        <div id="table_contents">
+            <table id="comments_table2" class='table-striped table-bordered' style="margin-top: 360px;">
             </table>
         </div>
 
-        <div class="row well" id="loader_section">
+        <div class="row" style="left: 445px; position: absolute; margin-top: 10px;" id="loader_section">
             <div style="width: 30em; margin-left: auto; margin-right: auto;">
-                <button id="load_button">Load More</button>
+                <button id="load_button" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Loading">Load More</button>
             </div>
         </div>
         

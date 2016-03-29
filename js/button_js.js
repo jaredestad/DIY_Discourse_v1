@@ -10,14 +10,14 @@ $(document).ready(function() {
     $("#hide_searchfields").click(function() {
         $("#searchfields").toggle();
         $("#show_searchfields").show();
-        document.getElementById("comments_table2").style.marginTop="10px";
+        document.getElementById("comments_table2").style.marginTop="55px";
 
     });
     
     $("#show_searchfields").click(function() {
         $("#searchfields").toggle();
         $("#show_searchfields").hide();
-        document.getElementById("comments_table2").style.marginTop="345px";
+        document.getElementById("comments_table2").style.marginTop="360px";
 
     });
 
@@ -44,6 +44,7 @@ $(document).ready(function() {
         $("#results").empty();
         $("#comments_table").empty();
         $("#comments_table2").empty();
+        $("#loader_section").hide();
     });
 
 
@@ -108,17 +109,24 @@ $(document).ready(function() {
 
         $count = 1;
 
-        create_table($str, $str2, $str3, $count);
+        create_table($(this), $str, $str2, $str3, $count);
         $("#load_button").click("submit", function () {
             $count += 1;
-            create_table($str, $str2, $str3, $count);
+            create_table($(this), $str, $str2, $str3, $count);
         });
 
 
     });
 
+            $(".dropdown input[type='checkbox']").click(function() {
+                var title = $(this).closest("li").find("input[type='checkbox']").attr("id");
+                title = "." + title;
+                $(title).toggle();
+                console.log(title);
+            });
 
-function create_table($str, $str2, $str3, $count) {
+function create_table($this, $str, $str2, $str3, $count) {
+    $this.button("loading");
     $.ajax({
         type : "POST",
         url : "./search_engine.php",
@@ -126,6 +134,7 @@ function create_table($str, $str2, $str3, $count) {
         dataType : "json",
 
         success : function(result) {
+            $this.button("reset");
             console.log(result);
             console.log(result.table_text);
             $("#comments_table2").html(result.table_text);
@@ -139,11 +148,6 @@ function create_table($str, $str2, $str3, $count) {
                 }
             });
 
-            $(".dropdown input[type='checkbox']").click(function() {
-                var title = $(this).closest("li").find("input[type='checkbox']").attr("id");
-                title = "." + title;
-                $(title).toggle();
-            });
 
 
             $(".saver").hide();

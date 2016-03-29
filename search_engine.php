@@ -77,7 +77,11 @@
             
             if($keyword_array[$x+2] == "Keyword")
             {
-                    $sql .= " body LIKE '% " . mysql_real_escape_string( $keyword_array[$x+1] ) . " %'";
+                    $sql .= " (body LIKE '% " . mysql_real_escape_string( $keyword_array[$x+1] ) . " %' OR body LIKE '" . mysql_real_escape_string( $keyword_array[$x+1] ) . "%' OR body LIKE '% " .  mysql_real_escape_string( $keyword_array[$x+1] ) . "')";
+            }
+            else if($keyword_array[$x+2] == "Tag")
+            {
+                $sql .= " (tags Like '% " . mysql_real_escape_string( $keyword_array[$x+1]) . ",%' OR tags LIKE '" . mysql_real_escape_string( $keyword_array[$x+1]) . ",%')";
             }
             else
             {
