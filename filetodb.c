@@ -11,6 +11,7 @@
 #include <string.h>
 #include <mysql.h>
 #include <my_global.h>
+#define NELEMS(x) (sizeof(x)/sizeof(x[0]));
 
 char *filename = "RC_2015-01";
 //char *filename = "example_json.txt";
@@ -49,6 +50,19 @@ void mysql_handler(char **array)
     mysql_close(conn);
     
 }
+char* array_swap(char *array, int  SIZE, int COUNT)
+{
+    char* new_array = malloc(sizeof(char) * SIZE);
+    int x;
+    for(x = 0; x < COUNT-1; x++)
+    {
+        new_array[x] = array[x];
+    }
+    
+    free(array);
+    return new_array;
+    
+}
 void json_parse(FILE *fr){
 
     int x = 0, SIZE = 100, CATNUM = 21;
@@ -73,7 +87,7 @@ void json_parse(FILE *fr){
                 if(count > SIZE-1)//resize word
                 {
                     SIZE = SIZE * 2;
-                    word = (char*)realloc(word, SIZE);
+                    word = array_swap(word, SIZE, count);
                 }
                 word[count] = ch;// +'0'
                 count++;
@@ -81,7 +95,7 @@ void json_parse(FILE *fr){
             if(count > SIZE-1)//resize word
             {
                 SIZE = SIZE * 2;
-                word = (char*)realloc(word, SIZE);
+                word = array_swap(word, SIZE, count);
             }
             word[count] = '\0';
             printf("%s\n", word);
@@ -103,7 +117,7 @@ void json_parse(FILE *fr){
                             if(counter > SIZE-1)//resize word
                             {
                                 SIZE = SIZE * 2;
-                                contents = (char*)realloc(contents, SIZE);
+                                contents = array_swap(contents, SIZE, counter);
                             }
                             if(go != 1);
                                 ch = fgetc(fr);
@@ -116,7 +130,7 @@ void json_parse(FILE *fr){
                                 if(counter > SIZE-1)//resize word
                                 {
                                     SIZE = SIZE * 2;
-                                    contents = realloc(contents, SIZE);
+                                    contents = array_swap(contents, SIZE, counter);
                                 }
                                 
                                 if(ch == 'n')
@@ -134,14 +148,14 @@ void json_parse(FILE *fr){
                                     if(counter > SIZE-1)//resize word
                                     {
                                         SIZE = SIZE * 2;
-                                        contents = realloc(contents, SIZE);
+                                        contents = array_swap(contents, SIZE, counter);
                                     }
                                     contents[counter] = '\\';
                                     counter++;
                                     if(counter > SIZE-1)//resize word
                                     {
                                         SIZE = SIZE * 2;
-                                        contents = realloc(contents, SIZE);
+                                        contents = array_swap(contents, SIZE, counter);
                                     }
                                     contents[counter] = '\\';
                                     counter++;
@@ -168,14 +182,14 @@ void json_parse(FILE *fr){
                                     if(counter > SIZE-1)//resize word
                                     {
                                         SIZE = SIZE * 2;
-                                        contents = realloc(contents, SIZE);
+                                        contents = array_swap(contents, SIZE, counter);
                                     }
                                     contents[counter] = '\\';
                                     counter++;
                                     if(counter > SIZE-1)//resize word
                                     {
                                         SIZE = SIZE * 2;
-                                        contents = realloc(contents, SIZE);
+                                        contents = array_swap(contents, SIZE, counter);
                                     }
                                     contents[counter] = ch;
                                     counter++;
@@ -187,7 +201,7 @@ void json_parse(FILE *fr){
                                 if(counter > SIZE-1)//resize word
                                 {
                                     SIZE = SIZE * 2;
-                                    contents = realloc(contents, SIZE);
+                                    contents = array_swap(contents, SIZE, counter);
                                 }
                                 if(ch == '\'')
                                 {
@@ -197,7 +211,7 @@ void json_parse(FILE *fr){
                                 if(counter > SIZE-1)//resize word
                                 {
                                     SIZE = SIZE * 2;
-                                    contents = realloc(contents, SIZE);
+                                    contents = array_swap(contents, SIZE, counter);
                                 }
                                 contents[counter] = ch;
                                 counter++;
@@ -210,7 +224,7 @@ void json_parse(FILE *fr){
                         if(counter > SIZE-1)//resize word
                         {
                             SIZE = SIZE * 2;
-                            contents = (char*)realloc(contents, SIZE);
+                            contents = array_swap(contents, SIZE, counter);
                         }
                         contents[counter] = '\0';
                     }
@@ -255,7 +269,7 @@ void json_parse(FILE *fr){
         if(ch == '}')
             break;
     }//ends while
-    mysql_handler(charact);
+    //mysql_handler(charact);
     for(x = 0; x < CATNUM; x++)
     {
         //printf("%s\n", charact[x]);

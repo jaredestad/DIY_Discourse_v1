@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+    $("#table_contents").hide();
+    $("#table_contents2").hide();
     $("#loader_section").hide();
     $("#show_searchfields").hide();
     $("#searchfields").show();
@@ -10,14 +12,14 @@ $(document).ready(function() {
     $("#hide_searchfields").click(function() {
         $("#searchfields").toggle();
         $("#show_searchfields").show();
-        document.getElementById("comments_table2").style.marginTop="55px";
+        document.getElementById("table_contents").style.marginTop="55px";
 
     });
-    
+
     $("#show_searchfields").click(function() {
         $("#searchfields").toggle();
         $("#show_searchfields").hide();
-        document.getElementById("comments_table2").style.marginTop="360px";
+        document.getElementById("table_contents").style.marginTop="360px";
 
     });
 
@@ -45,6 +47,7 @@ $(document).ready(function() {
         $("#comments_table").empty();
         $("#comments_table2").empty();
         $("#loader_section").hide();
+        $("#table_contents").hide();
     });
 
 
@@ -118,99 +121,102 @@ $(document).ready(function() {
 
     });
 
-            $(".dropdown input[type='checkbox']").click(function() {
-                var title = $(this).closest("li").find("input[type='checkbox']").attr("id");
-                title = "." + title;
-                $(title).toggle();
-                console.log(title);
-            });
+    $(".dropdown input[type='checkbox']").click(function() {
+        var title = $(this).closest("li").find("input[type='checkbox']").attr("id");
+        title = "." + title;
+        $(title).toggle();
+        console.log(title);
+    });
 
-function create_table($this, $str, $str2, $str3, $count) {
-    $this.button("loading");
-    $.ajax({
-        type : "POST",
-        url : "./search_engine.php",
-        data : { keyword_data : $str, feature_data : $str2, numerical_data : $str3, load_counter : $count},
-        dataType : "json",
+    function create_table($this, $str, $str2, $str3, $count) {
+        $this.button("loading");
+        $.ajax({
+            type : "POST",
+            url : "./search_engine.php",
+            data : { keyword_data : $str, feature_data : $str2, numerical_data : $str3, load_counter : $count},
+            dataType : "json",
 
-        success : function(result) {
-            $this.button("reset");
-            console.log(result);
-            console.log(result.table_text);
-            $("#comments_table2").html(result.table_text);
-            $("#loader_section").show();
+            success : function(result) {
+                $this.button("reset");
+                console.log(result);
+                console.log(result.table_text);
+                $("#comments_table2").html(result.table_text);
+                $("#comments_table3").html(result.table_text);
+                $("#table_contents").show();
+                $("#table_contents2").show();
+                $("#loader_section").show();
 
-            $(".dropdown input[type='checkbox']").each(function() {
-                if( $(this).prop("checked")==false){
-                var title = $(this).attr("id");
-                title = "." + title;
-                $(title).hide();
-                }
-            });
-
-
-
-            $(".saver").hide();
-            $(".tags_box").attr("disabled", true);
-            $(".edit_button").click(function() {
-                $(this).hide();
-                $(this).next(".saver").show();
-                $(this).next(".saver").next(".tags_box").removeProp("disabled");
-                console.log( $(this).next(".saver").next(".tags_box") );
-                console.log( $(this).next(".saver") );
-            });
-
-            $(".save_button").click(function() {
-                var $id_value = $(this).closest("tr").find("td:first").text();
-                var $row_id = $(this).closest("tr").find("td.row_id_column").text();
-                var $tag_area = document.getElementById($row_id+"").value;
-                //alert($tag_area);
-                //alert($id_value);
-
-                $.ajax({
-                    type : "POST",
-                    url : "./insert_tag.php",
-                    data : { new_tag : $tag_area, cid : $id_value },
-                    dataType : "text",
+                $(".dropdown input[type='checkbox']").each(function() {
+                    if( $(this).prop("checked")==false){
+                        var title = $(this).attr("id");
+                        title = "." + title;
+                        $(title).hide();
+                    }
+                });
 
 
-                    success : function(result) {
-                        //console.log(result);
 
-                    },
+                $(".saver").hide();
+                $(".tags_box").attr("disabled", true);
+                $(".edit_button").click(function() {
+                    $(this).hide();
+                    $(this).next(".saver").show();
+                    $(this).next(".saver").next(".tags_box").removeProp("disabled");
+                    console.log( $(this).next(".saver").next(".tags_box") );
+                    console.log( $(this).next(".saver") );
+                });
+
+                $(".save_button").click(function() {
+                    var $id_value = $(this).closest("tr").find("td:first").text();
+                    var $row_id = $(this).closest("tr").find("td.row_id_column").text();
+                    var $tag_area = document.getElementById($row_id+"").value;
+                    //alert($tag_area);
+                    //alert($id_value);
+
+                    $.ajax({
+                        type : "POST",
+                        url : "./insert_tag.php",
+                        data : { new_tag : $tag_area, cid : $id_value },
+                        dataType : "text",
 
 
-                    error : function(jqXHR, textStatus, errorThrown) {
-                                console.log( errorThrown );
-                                console.log("error jqXHR: " + jqXHR);
-                                console.log("error textStatus: " + textStatus);
-                            }
+                        success : function(result) {
+                            //console.log(result);
+
+                        },
+
+
+                        error : function(jqXHR, textStatus, errorThrown) {
+                                    console.log( errorThrown );
+                                    console.log("error jqXHR: " + jqXHR);
+                                    console.log("error textStatus: " + textStatus);
+                                }
+
+                    });
+
+                    // alert($id_value);
 
                 });
 
-                // alert($id_value);
-
-            });
-
-            $(".saver").click(function() {
-                $(this).hide();
-                $(this).prev(".edit_button").show();
-                $(this).next(".tags_box").attr("disabled", true);
-                console.log( $(this).next(".tags_box") );
-            });
+                $(".saver").click(function() {
+                    $(this).hide();
+                    $(this).prev(".edit_button").show();
+                    $(this).next(".tags_box").attr("disabled", true);
+                    console.log( $(this).next(".tags_box") );
+                });
 
 
-        },
+            },
 
 
 
-        error : function(jqXHR, textStatus, errorThrown) {
-                    console.log( errorThrown );
-                    console.log("error jqXHR: " + jqXHR);
-                    console.log("error textStatus: " + textStatus);
-                }
-    });
-};
+            error : function(jqXHR, textStatus, errorThrown) {
+                        console.log( errorThrown );
+                        console.log("error jqXHR: " + jqXHR);
+                        console.log("error textStatus: " + textStatus);
+                    }
+        });
+    };
 
 
     $("#search_button").click(function() {
