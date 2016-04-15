@@ -1,25 +1,4 @@
 
-.table_div_wrap {
-    display: inline-block;
-
-}
-
-.table_div {
-    margin-top: 360px;
-    background-color: #5bc0de;
-    padding: 50px 15px 15px 15px;
-    display: table;
-    float: left;
-    border: 1px solid #46b8da;
-
-}
-
-.table_style {
-    background-color: white;
-    white-space: normal;
-    
-}
-
 .row-bottom-space{
     margin-bottom: 5px;
 }

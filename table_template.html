@@ -1,3 +1,6 @@
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"> 
+<meta charset="utf-8">
+
 <table id ="comments_table" class='table-striped table-bordered'>
     <thead>
         <th class="comment_id_column">Comment ID</th>
@@ -17,8 +20,16 @@
         <th class="score_column">Score</th>
         <th class="gilded_column">Gilded</th>
         <th class="controversiality_column">Controversiality</th>
+        <th class="edited_column">Edited</th>
+        <th class="archived_column">Archived</th>
+        <th class="distinguished_column">Distinguished</th>
+        <th class="score_hidden_column">Score Hidden</th>
         <th class="row_id_column">Row ID</th>
         <th class="tags_column">Tags</th>
+        <th class="wordcount_column">Word Count</th>
+        <th class="lwordcount_column">Long Word Count</th>
+        <th class="sentcount_column">Sentence Count</th>
+        <th class="lix_column">LIX</th>
     </thead>
 
     {{#my_table}}
@@ -26,7 +37,11 @@
         <td class="comment_id_column">{{{id}}}</td>
         <td class="author_column">{{{author}}}</td>
         <td class="subreddit_column">{{{subreddit}}}</td>
-        <td class="body_column">{{{body}}}</td>
+        <td class="body_column">{{{body}}}
+            <br>
+                <a style="font-size: 10px;" href="http://www.reddit.com/comments/{{{linker}}}/xyzzy/{{{id}}}">Link to Reddit</a>
+        </td>
+
         <td class="subreddit_id_column">{{{subreddit_id}}}</td>
         <td class="parent_id_column">{{{parent_id}}}</td>
         <td class="link_id_column">{{{link_id}}}</td>
@@ -40,7 +55,11 @@
         <td class="score_column">{{{score}}}</td>
         <td class="gilded_column">{{{gilded}}}</td>
         <td class="controversiality_column">{{{controversiality}}}</td>
-        <td class="row_id_column">{{{count}}}</td>
+        <td class="edited_column">{{{edited}}}</td>
+        <td class="archived_column">{{{archived}}}</td>
+        <td class="distinguished_column">{{{distinguished}}}</td>
+        <td class="score_hidden_column">{{{score_hidden}}}</td>
+        <td class="row_id_column">{{{row_id}}}</td>
 
         <td class="tags_column">
             <button class="edit_button" style="width: 142px; margin-bottom: 5px;">Edit</button>
@@ -48,10 +67,16 @@
                 <button class="save_button" style="width: 100px; float: left;">Save</button>
                 <button class="cancel_button" style="width: 42px;"><i class="glyphicon glyphicon-remove"></i></button>
             </div>
-            <div>
-            <textarea class="tags_box" id="{{{count}}}" rows="3">{{{tags}}}</textarea>
+            <div class="tags_div">
+
+            <textarea class="tags_box" id="{{{row_id}}}" rows="3">{{{tags}}}</textarea>
         </div>
         </td>
+        <td class="wordcount_column">{{{wordcount}}}</td>
+        <td class="lwordcount_column">{{{lwordcount}}}</td>
+        <td class="sentcount_column">{{{sentcount}}}</td>
+        <td class="lix_column">{{{lix}}}</td>
+
     </tr>
     {{/my_table}}
 </table>

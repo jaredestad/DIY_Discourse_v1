@@ -197,6 +197,7 @@
     
     
     mysql_select_db('reddit');
+    mysql_set_charset('utf8', $conn);
     mysql_query("SET NAMES utf8");
     $result = mysql_query($sql, $conn);
     
@@ -209,7 +210,10 @@
     $num = 0;
     while(($row = mysql_fetch_assoc($result)) != null)
     {
-        $row["count"] = "row_id_" . $num;
+        $row["row_id"] = "row_id_" . $num;
+        $row["linker"] = substr($row["link_id"], 3);
+        //$replacedString = preg_replace("/\\\\u([0-9a-fA-f]{4})/", "&#x$1;", $row["body"]);
+        //$row["body"] = mb_convert_encoding($replacedString, 'UTF-8', 'HTML-ENTITIES');
         //print_r($row);
         $num++;
         
@@ -221,7 +225,7 @@
     $response = array();
     
     $response['table_text'] = $m->render($template_contents, $template_array);
-    echo json_encode($response);
+    echo json_encode($response);//JSON_UNESCAPED_UNICODE
     
     mysql_close($conn);
     

@@ -113,13 +113,17 @@ $(document).ready(function() {
         $count = 1;
 
         create_table($(this), $str, $str2, $str3, $count);
-        $("#load_button").click("submit", function () {
+
+
+
+        $("#load_button").unbind().click("submit", function () {
             $count += 1;
+            console.log($str + " " + $str2 + " " + $str3 + " " + $count);
             create_table($(this), $str, $str2, $str3, $count);
         });
 
-
     });
+
 
     $(".dropdown input[type='checkbox']").click(function() {
         var title = $(this).closest("li").find("input[type='checkbox']").attr("id");
@@ -127,6 +131,7 @@ $(document).ready(function() {
         $(title).toggle();
         console.log(title);
     });
+
 
     function create_table($this, $str, $str2, $str3, $count) {
         $this.button("loading");
@@ -141,9 +146,7 @@ $(document).ready(function() {
                 console.log(result);
                 console.log(result.table_text);
                 $("#comments_table2").html(result.table_text);
-                $("#comments_table3").html(result.table_text);
                 $("#table_contents").show();
-                $("#table_contents2").show();
                 $("#loader_section").show();
 
                 $(".dropdown input[type='checkbox']").each(function() {
@@ -154,22 +157,23 @@ $(document).ready(function() {
                     }
                 });
 
-
-
                 $(".saver").hide();
                 $(".tags_box").attr("disabled", true);
                 $(".edit_button").click(function() {
                     $(this).hide();
+                    console.log("button clicked");
                     $(this).next(".saver").show();
-                    $(this).next(".saver").next(".tags_box").removeProp("disabled");
-                    console.log( $(this).next(".saver").next(".tags_box") );
+                    $(this).next(".saver").next(".tags_div").find(".tags_box").removeProp("disabled");
+                    console.log( $(this).next(".saver").next(".tags_div").find(".tags_box").attr("id") );
                     console.log( $(this).next(".saver") );
                 });
+
 
                 $(".save_button").click(function() {
                     var $id_value = $(this).closest("tr").find("td:first").text();
                     var $row_id = $(this).closest("tr").find("td.row_id_column").text();
                     var $tag_area = document.getElementById($row_id+"").value;
+                    console.log($tag_area);
                     //alert($tag_area);
                     //alert($id_value);
 
@@ -198,11 +202,37 @@ $(document).ready(function() {
 
                 });
 
+                $(".cancel_button").click(function() {
+                    var $id_value2 = $(this).closest("tr").find("td:first").text();
+                    var $row_id2 = $(this).closest("tr").find("td.row_id_column").text();
+                    console.log("id : " + $id_value2 + " rowid : " + $row_id2);
+                    
+                    $.ajax({
+                        type: "POST",
+                        url: "./refresh_tag.php",
+                        data: {cid: $id_value2},
+                        dataType: "text",
+
+                        success: function(result) {
+                            console.log(result);
+                            document.getElementById($row_id2).value = result;
+
+                        },
+
+                        error : function(jqXHR, textStatus, errorThrown) {
+                                    console.log( errorThrown );
+                                    console.log("error jqXHR: " + jqXHR);
+                                    console.log("error textStatus: " + textStatus);
+                                }
+                    });
+
+                });
+
+
                 $(".saver").click(function() {
                     $(this).hide();
                     $(this).prev(".edit_button").show();
-                    $(this).next(".tags_box").attr("disabled", true);
-                    console.log( $(this).next(".tags_box") );
+                    $(this).next(".tags_div").find(".tags_box").attr("disabled", true);
                 });
 
 
@@ -211,6 +241,7 @@ $(document).ready(function() {
 
 
             error : function(jqXHR, textStatus, errorThrown) {
+                        $this.button("reset");
                         console.log( errorThrown );
                         console.log("error jqXHR: " + jqXHR);
                         console.log("error textStatus: " + textStatus);
@@ -219,37 +250,5 @@ $(document).ready(function() {
     };
 
 
-    $("#search_button").click(function() {
-        console.log("you clicked the JSON button!");
-
-        $.ajax({
-            type : "POST",
-            url : "./get_json.php",
-            data : { keyword : $("#keyword_search").val(), subreddit : $("#subreddit_search").val(), id : $("#comment_id_search").val(), author : $("#author_search").val(), subreddit_id : $("#subreddit_id_search").val(), parent_id : $("#parent_id_search").val() },
-
-            dataType : "json",
-
-            success : function(result) {
-                console.log("result.table_text is: " + result.table_text);
-                $("#test_area").text( result );                
-                $("#comments_table").html(result.table_text);
-
-                $("#comments_table tr").click(function(){
-                    $(this).addClass('selected').siblings().removeClass('selected');
-                    var value2 = $(this)[0].nodeName;
-                    alert(value2);
-                    var value=$(this).find('td:first').html();
-                    alert(value);
-                });
-
-            },
-
-            error : function(jqXHR, textStatus, errorThrown) {
-                        $("#test_text_area").text( errorThrown );
-                        console.log("error jqXHR: " + jqXHR);
-                        console.log("error textStatus: " + textStatus);
-                    }
-        });
-    });
 
 });
