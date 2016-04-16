@@ -9,6 +9,24 @@ $(document).ready(function() {
     var $startFact = false;
     var $currentDiv = $(".start");
 
+
+    $("#radio_data input[type='radio']").click(function() {
+
+        var name = $(this)[0].name;
+        if( $(this).data("waschecked") == true){
+           $(this).prop("checked", false);
+           $(this).data("waschecked", false);
+        }
+        else{
+            $(this).data("waschecked", true);
+        }
+
+        $(this).next("input[name='" + name + "']").data("waschecked", false);
+
+        alert( $(this).parent().find("input")[0].value);
+
+    });
+
     $("#hide_searchfields").click(function() {
         $("#searchfields").toggle();
         $("#show_searchfields").show();
@@ -38,6 +56,20 @@ $(document).ready(function() {
         }
     });
 
+    $("#add_num").click(function(){
+        if($startFact == false){
+            $startFact = true;
+            $currentDiv = $(".startOption").next(".nextOption"); 
+            $currentDiv.show();
+        }
+        else{
+
+            $currentDiv = $currentDiv.next(".nextOption");
+            $currentDiv.show();
+            if( !$currentDiv.next(".nextOption").length)
+        $("#add_num").hide();
+        }
+    });
 
 
     $("#clear_button").click(function() {
@@ -174,6 +206,7 @@ $(document).ready(function() {
                     var $row_id = $(this).closest("tr").find("td.row_id_column").text();
                     var $tag_area = document.getElementById($row_id+"").value;
                     console.log($tag_area);
+                    console.log($id_value);
                     //alert($tag_area);
                     //alert($id_value);
 

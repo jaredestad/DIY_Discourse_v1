@@ -38,22 +38,22 @@
         </div>
 
 
-            <div class="row" style="left: 445px; position: absolute;" id="fieldholder">
-                <div style="width: 420px; margin-left: auto; margin-right: auto;">
-                    <button id="show_searchfields">Show Search Fields</button>
-                </div>
+        <div class="row" style="left: 445px; position: absolute;" id="fieldholder">
+            <div style="width: 30em; margin-left: auto; margin-right: auto;">
+                <button id="show_searchfields">Show Search Fields</button>
             </div>
+        </div>
 
         <div id="searchfields" class="well" style="position: fixed; width: 100%; margin-top: -20px;">
 
             <!-- Section 1 -->
-            <div class="row">
-                <div style="width: 420px; margin-left: auto; margin-right: auto; margin-bottom: 10px;">
+            <div class="row" style="left: 445px; position: absolute">
+                <div style="width: 30em; margin-left: auto; margin-right: auto; margin-bottom: 10px;">
                     <button id="hide_searchfields">Hide Search Fields</button>
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row" style="margin-top: 40px;">
                 <div class="col-md-5">
                     <form id="getInfo">
 
@@ -188,11 +188,114 @@
                     <button id="addfield">Add Field</button>
 
 
-                    <div style="margin-top: 5px;">
-                    <dl class="dropdown">
-                        <dt id="firstdt"><a href="#" id="options_selector"><span id="s_options">Select display options</span></a></dt>
+                    <div style="margin-top: 5px; overflow: hidden;" class="number_options_wrapper">
 
-                        <dd>
+                        <div style="float: left;">
+                            <div class="startOption">
+                                <select id="num_opt1" name="num_opt1">
+                                    <option value=">">&gt;</option>
+                                    <option value="<">&lt;</option>
+                                    <option value="=">=</option>
+                                </select>
+
+                                <input type="text" class="clear-form" id="limiter1" name="limiter1">
+
+                                <select id="word_opt1" name="word_opt1">
+                                    <option value="wordcount">Word Count</option>
+                                    <option value="lwordcount">Long Word Count</option>
+                                    <option value="sentcount">Sentence Count</option>
+                                    <option value="lix">LIX</option>
+                                </select>
+
+                            </div>
+
+                            <div class="nextOption">
+                                <select id="num_opt2" name="num_opt2">
+                                    <option value=">">&gt;</option>
+                                    <option value="<">&lt;</option>
+                                    <option value="=">=</option>
+                                </select>
+
+                                <input type="text" class="clear-form" id="limiter2" name="limiter2">
+
+                                <select id="word_opt2" name="word_opt2">
+                                    <option value="wordcount">Word Count</option>
+                                    <option value="lwordcount">Long Word Count</option>
+                                    <option value="sentcount">Sentence Count</option>
+                                    <option value="lix">LIX</option>
+                                </select>
+
+                            </div>
+
+                            <div class="nextOption">
+                                <select id="num_opt3" name="num_opt3">
+                                    <option value=">">&gt;</option>
+                                    <option value="<">&lt;</option>
+                                    <option value="=">=</option>
+                                </select>
+
+                                <input type="text" class="clear-form" id="limiter3" name="limiter3">
+
+                                <select id="word_opt3" name="word_opt3">
+                                    <option value="wordcount">Word Count</option>
+                                    <option value="lwordcount">Long Word Count</option>
+                                    <option value="sentcount">Sentence Count</option>
+                                    <option value="lix">LIX</option>
+                                </select>
+                            </div>
+
+                            <div class="nextOption">
+                                <select id="num_opt4" name="num_opt4">
+                                    <option value=">">&gt;</option>
+                                    <option value="<">&lt;</option>
+                                    <option value="=">=</option>
+                                </select>
+
+                                <input type="text" class="clear-form" id="limiter4" name="limiter4">
+
+                                <select id="word_opt4" name="word_opt4">
+                                    <option value="wordcount">Word Count</option>
+                                    <option value="lwordcount">Long Word Count</option>
+                                    <option value="sentcount">Sentence Count</option>
+                                    <option value="lix">LIX</option>
+                                </select>
+                            </div>
+
+                            <button id="add_num">Add Field</button>
+                        </div>
+
+                        <div id="radio_data" class="checkboxes_data" style="display: block; float: left; margin-left: 10px;">
+                            <label>Is NULL?</label><br>
+
+                            <label>Edited</label>
+                            <label><input type="radio" name="edited"> True</label>
+                            <label><input type="radio" name="edited"> False</label>
+                            <br>
+
+                            <label>Archived</label>
+                            <label><input type="radio" name="archived" value="true"> True</label>
+                            <label><input type="radio" name="archived" value="false"> False</label>
+                            <br>
+
+                            <label>Distinguished</label>
+                            <label><input type="radio" name="distinguished"> NULL</label>
+                            <label><input type="radio" name="distinguished"> Not NULL</label>
+                            <br>
+
+                            <label>Score Hidden</label>
+                            <label><input type="radio" name="score_hidden"> True</label>
+                            <label><input type="radio" name="score_hidden"> False</label>
+
+                        </div>
+
+                    </div>
+
+                    <div style="margin-bottom: 5px; clear: left;">
+                    <div style="margin-top: 5px; ">
+                        <dl class="dropdown">
+                            <dt id="firstdt"><a href="#" id="options_selector"><span id="s_options">Select display options</span></a></dt>
+
+                            <dd>
                             <ul>
 
                                 <li><label>
@@ -231,8 +334,9 @@
 
                             </ul>
 
-                        </dd>
-                    </dl>
+                            </dd>
+                        </dl>
+                    </div>
                 </div>
 
                 </div><!--end section 1 div-->
@@ -322,7 +426,7 @@
                 <button id="load_button" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Loading">Load More</button>
             </div>
         </div>
-        
+
 
     </body>
 </html>
