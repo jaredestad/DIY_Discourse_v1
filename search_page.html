@@ -188,78 +188,83 @@
                     <button id="addfield">Add Field</button>
 
 
+
                     <div style="margin-top: 5px; overflow: hidden;" class="number_options_wrapper">
 
+
+
                         <div style="float: left;">
-                            <div class="startOption">
-                                <select id="num_opt1" name="num_opt1">
-                                    <option value=">">&gt;</option>
-                                    <option value="<">&lt;</option>
-                                    <option value="=">=</option>
-                                </select>
+                            <form id="limiter_options">
+                                <div class="startOption">
+                                    <select id="num_opt1" name="num_opt1">
+                                        <option value=">">&gt;</option>
+                                        <option value="<">&lt;</option>
+                                        <option value="=">=</option>
+                                    </select>
 
-                                <input type="text" class="clear-form" id="limiter1" name="limiter1">
+                                    <input type="text" class="clear-form" id="limiter1" name="limiter1">
 
-                                <select id="word_opt1" name="word_opt1">
-                                    <option value="wordcount">Word Count</option>
-                                    <option value="lwordcount">Long Word Count</option>
-                                    <option value="sentcount">Sentence Count</option>
-                                    <option value="lix">LIX</option>
-                                </select>
+                                    <select id="word_opt1" name="word_opt1">
+                                        <option value="wordcount">Word Count</option>
+                                        <option value="lwordcount">Long Word Count</option>
+                                        <option value="sentcount">Sentence Count</option>
+                                        <option value="lix">LIX</option>
+                                    </select>
 
-                            </div>
+                                </div>
 
-                            <div class="nextOption">
-                                <select id="num_opt2" name="num_opt2">
-                                    <option value=">">&gt;</option>
-                                    <option value="<">&lt;</option>
-                                    <option value="=">=</option>
-                                </select>
+                                <div class="nextOption">
+                                    <select id="num_opt2" name="num_opt2">
+                                        <option value=">">&gt;</option>
+                                        <option value="<">&lt;</option>
+                                        <option value="=">=</option>
+                                    </select>
 
-                                <input type="text" class="clear-form" id="limiter2" name="limiter2">
+                                    <input type="text" class="clear-form" id="limiter2" name="limiter2">
 
-                                <select id="word_opt2" name="word_opt2">
-                                    <option value="wordcount">Word Count</option>
-                                    <option value="lwordcount">Long Word Count</option>
-                                    <option value="sentcount">Sentence Count</option>
-                                    <option value="lix">LIX</option>
-                                </select>
+                                    <select id="word_opt2" name="word_opt2">
+                                        <option value="wordcount">Word Count</option>
+                                        <option value="lwordcount">Long Word Count</option>
+                                        <option value="sentcount">Sentence Count</option>
+                                        <option value="lix">LIX</option>
+                                    </select>
 
-                            </div>
+                                </div>
 
-                            <div class="nextOption">
-                                <select id="num_opt3" name="num_opt3">
-                                    <option value=">">&gt;</option>
-                                    <option value="<">&lt;</option>
-                                    <option value="=">=</option>
-                                </select>
+                                <div class="nextOption">
+                                    <select id="num_opt3" name="num_opt3">
+                                        <option value=">">&gt;</option>
+                                        <option value="<">&lt;</option>
+                                        <option value="=">=</option>
+                                    </select>
 
-                                <input type="text" class="clear-form" id="limiter3" name="limiter3">
+                                    <input type="text" class="clear-form" id="limiter3" name="limiter3">
 
-                                <select id="word_opt3" name="word_opt3">
-                                    <option value="wordcount">Word Count</option>
-                                    <option value="lwordcount">Long Word Count</option>
-                                    <option value="sentcount">Sentence Count</option>
-                                    <option value="lix">LIX</option>
-                                </select>
-                            </div>
+                                    <select id="word_opt3" name="word_opt3">
+                                        <option value="wordcount">Word Count</option>
+                                        <option value="lwordcount">Long Word Count</option>
+                                        <option value="sentcount">Sentence Count</option>
+                                        <option value="lix">LIX</option>
+                                    </select>
+                                </div>
 
-                            <div class="nextOption">
-                                <select id="num_opt4" name="num_opt4">
-                                    <option value=">">&gt;</option>
-                                    <option value="<">&lt;</option>
-                                    <option value="=">=</option>
-                                </select>
+                                <div class="nextOption">
+                                    <select id="num_opt4" name="num_opt4">
+                                        <option value=">">&gt;</option>
+                                        <option value="<">&lt;</option>
+                                        <option value="=">=</option>
+                                    </select>
 
-                                <input type="text" class="clear-form" id="limiter4" name="limiter4">
+                                    <input type="text" class="clear-form" id="limiter4" name="limiter4">
 
-                                <select id="word_opt4" name="word_opt4">
-                                    <option value="wordcount">Word Count</option>
-                                    <option value="lwordcount">Long Word Count</option>
-                                    <option value="sentcount">Sentence Count</option>
-                                    <option value="lix">LIX</option>
-                                </select>
-                            </div>
+                                    <select id="word_opt4" name="word_opt4">
+                                        <option value="wordcount">Word Count</option>
+                                        <option value="lwordcount">Long Word Count</option>
+                                        <option value="sentcount">Sentence Count</option>
+                                        <option value="lix">LIX</option>
+                                    </select>
+                                </div>
+                            </form>
 
                             <button id="add_num">Add Field</button>
                         </div>
@@ -267,77 +272,83 @@
                         <div id="radio_data" class="checkboxes_data" style="display: block; float: left; margin-left: 10px;">
                             <label>Is NULL?</label><br>
 
-                            <label>Edited</label>
-                            <label><input type="radio" name="edited"> True</label>
-                            <label><input type="radio" name="edited"> False</label>
-                            <br>
+                            <form id="radio_options">
+                                <label>Edited</label>
+                                <label><input type="radio" name="edited" value="true"> True</label>
+                                <label><input type="radio" name="edited" value="false"> False</label>
+                                <br>
 
-                            <label>Archived</label>
-                            <label><input type="radio" name="archived" value="true"> True</label>
-                            <label><input type="radio" name="archived" value="false"> False</label>
-                            <br>
+                                <label>Archived</label>
+                                <label><input type="radio" name="archived" value="true"> True</label>
+                                <label><input type="radio" name="archived" value="false"> False</label>
+                                <br>
 
-                            <label>Distinguished</label>
-                            <label><input type="radio" name="distinguished"> NULL</label>
-                            <label><input type="radio" name="distinguished"> Not NULL</label>
-                            <br>
+                                <label>Distinguished</label>
+                                <label><input type="radio" name="distinguished" value="true"> NULL</label>
+                                <label><input type="radio" name="distinguished" value="false"> Not NULL</label>
+                                <br>
 
-                            <label>Score Hidden</label>
-                            <label><input type="radio" name="score_hidden"> True</label>
-                            <label><input type="radio" name="score_hidden"> False</label>
+                                <label>Score Hidden</label>
+                                <label><input type="radio" name="score_hidden" value="true"> True</label>
+                                <label><input type="radio" name="score_hidden" value="false"> False</label>
+
+                            </form>
 
                         </div>
 
                     </div>
 
                     <div style="margin-bottom: 5px; clear: left;">
-                    <div style="margin-top: 5px; ">
-                        <dl class="dropdown">
-                            <dt id="firstdt"><a href="#" id="options_selector"><span id="s_options">Select display options</span></a></dt>
+                        <div style="margin-top: 5px; " id="original_div">
+                            <div id="mover_div">
+                                <dl class="dropdown">
+                                    <dt id="firstdt"><a href="javascript: return false;" id="options_selector"><span id="s_options">Select display options</span></a></dt>
 
-                            <dd>
-                            <ul>
+                                    <dd>
+                                    <ul>
 
-                                <li><label>
-                                    <input type="checkbox" value="ID" id="comment_id_column" >ID
-                                </label></li>
+                                        <li><label>
+                                            <input type="checkbox" value="ID" id="comment_id_column" >ID
+                                        </label></li>
 
-                                <li><label><input type="checkbox" value="Author" id="author_column" checked>Author</label></li>
+                                        <li><label><input type="checkbox" value="Author" id="author_column" checked>Author</label></li>
 
-                                <li><label><input type="checkbox" value="Subreddit" id="subreddit_column" checked>Subreddit</label></li>
+                                        <li><label><input type="checkbox" value="Subreddit" id="subreddit_column" checked>Subreddit</label></li>
 
-                                <li><label><input type="checkbox" value="Body" id="body_column" checked>Body</label></li>
-                                <li><label><input type="checkbox" value="Subreddit ID" id="subreddit_id_column">Subreddit ID</label></li>
-                                <li><label><input type="checkbox" value="Parent ID" id="parent_id_column">Parent ID</label></li>
-                                <li><label><input type="checkbox" value="Link ID" id="link_id_column">Link ID</label></li>
-                                <li><label><input type="checkbox" value="Name" id="name_column">Name</label></li>
-                                <li><label><input type="checkbox" value="Author Flair Text" id="author_flair_text_column">Author Flair Text</label></li>
-                                <li><label><input type="checkbox" value="Author Flair CSS Class" id="author_flair_css_class_column">Author Flair CSS Class</label></li>
-                                <li><label><input type="checkbox" value="Retrieved On" id="retrieved_on_column">Retrieved On</label></li>
-                                <li><label><input type="checkbox" value="Created UTC" id="created_utc_column">Created UTC</label></li>
-                                <li><label><input type="checkbox" value="Ups" id="ups_column">Ups</label></li>
-                                <li><label><input type="checkbox" value="Downs" id="downs_column">Downs</label></li>
-                                <li><label><input type="checkbox" value="Score" id="score_column">Score</label></li>
-                                <li><label><input type="checkbox" value="Gilded" id="gilded_column">Gilded</label></li>
-                                <li><label><input type="checkbox" value="Controversiality" id="controversiality_column">Controversiality</label></li>
-                                <li><label><input type="checkbox" value="Edited" id="edited_column">Edited</label></li>
-                                <li><label><input type="checkbox" value="Archived" id="archived_column">Archived</label></li>
-                                <li><label><input type="checkbox" value="Distinguished" id="distinguished_column">Distinguished</label></li>
-                                <li><label><input type="checkbox" value="Score Hidden" id="score_hidden_column">Score Hidden</label></li>
-                                <li><label><input type="checkbox" value="Row ID" id="row_id_column">Row ID</label></li>
-                                <li><label><input type="checkbox" value="Tags" id="tags_column">Tags</label></li>
+                                        <li><label><input type="checkbox" value="Body" id="body_column" checked>Body</label></li>
+                                        <li><label><input type="checkbox" value="Subreddit ID" id="subreddit_id_column">Subreddit ID</label></li>
+                                        <li><label><input type="checkbox" value="Parent ID" id="parent_id_column">Parent ID</label></li>
+                                        <li><label><input type="checkbox" value="Link ID" id="link_id_column">Link ID</label></li>
+                                        <li><label><input type="checkbox" value="Name" id="name_column">Name</label></li>
+                                        <li><label><input type="checkbox" value="Author Flair Text" id="author_flair_text_column">Author Flair Text</label></li>
+                                        <li><label><input type="checkbox" value="Author Flair CSS Class" id="author_flair_css_class_column">Author Flair CSS Class</label></li>
+                                        <li><label><input type="checkbox" value="Retrieved On" id="retrieved_on_column">Retrieved On</label></li>
+                                        <li><label><input type="checkbox" value="Created UTC" id="created_utc_column">Created UTC</label></li>
+                                        <li><label><input type="checkbox" value="Ups" id="ups_column">Ups</label></li>
+                                        <li><label><input type="checkbox" value="Downs" id="downs_column">Downs</label></li>
+                                        <li><label><input type="checkbox" value="Score" id="score_column">Score</label></li>
+                                        <li><label><input type="checkbox" value="Gilded" id="gilded_column">Gilded</label></li>
+                                        <li><label><input type="checkbox" value="Controversiality" id="controversiality_column">Controversiality</label></li>
+                                        <li><label><input type="checkbox" value="Edited" id="edited_column">Edited</label></li>
+                                        <li><label><input type="checkbox" value="Archived" id="archived_column">Archived</label></li>
+                                        <li><label><input type="checkbox" value="Distinguished" id="distinguished_column">Distinguished</label></li>
+                                        <li><label><input type="checkbox" value="Score Hidden" id="score_hidden_column">Score Hidden</label></li>
+                                        <li><label><input type="checkbox" value="Row ID" id="row_id_column">Row ID</label></li>
+                                        <li><label><input type="checkbox" value="Tags" id="tags_column">Tags</label></li>
 
-                                <li><label><input type="checkbox" value="Word Count" id="wordcount_column">Word Count</label></li>
-                                <li><label><input type="checkbox" value="Long Word Count" id="lwordcount_column">Long Word Count</label></li>
-                                <li><label><input type="checkbox" value="Sentence Count" id="sentcount_column">Sentence Count</label></li>
-                                <li><label><input type="checkbox" value="LIX" id="lix_column">LIX</label></li>
+                                        <li><label><input type="checkbox" value="Word Count" id="wordcount_column">Word Count</label></li>
+                                        <li><label><input type="checkbox" value="Long Word Count" id="lwordcount_column">Long Word Count</label></li>
+                                        <li><label><input type="checkbox" value="Sentence Count" id="sentcount_column">Sentence Count</label></li>
+                                        <li><label><input type="checkbox" value="LIX" id="lix_column">LIX</label></li>
 
-                            </ul>
+                                    </ul>
 
-                            </dd>
-                        </dl>
+                                    </dd>
+                                </dl>
+                            </div>
+
+                        </div>
                     </div>
-                </div>
 
                 </div><!--end section 1 div-->
 
@@ -399,15 +410,16 @@
 
 
 
-
-
-
             <div class="row">
                 <div style="width: 61em; margin-left: auto; margin-right: auto;">
                     <button id="search_button2" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Loading">Search</button>
                     <button id="clear_button">Clear</button>
                 </div>
             </div>
+
+        </div>
+
+        <div id="move_spot" style="position: fixed; left: 5px;">
 
         </div>
 

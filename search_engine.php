@@ -14,6 +14,18 @@
     }
     
     $load_counter = $_POST['load_counter'];
+    
+    //delimiter data from ajax
+    $str_delimiter = $_POST['delimiter_data'];
+    parse_str($str_delimiter, $data_delimiter);
+    $delimiter_array = array_values($data_delimiter);
+   
+    $str_radio = $_POST['radio_data'];
+    parse_str($str_radio, $radio_data);
+    $radio_titles = array_keys($radio_data);
+    $radio_values = array_values($radio_data);
+    
+    
     //keyword data from ajax
     $str_keyword = $_POST['keyword_data'];
     //print_r($str_keyword);
@@ -186,6 +198,53 @@
             }
         }
         
+    }
+    
+    
+    
+    for($x = 0; $x < count($delimiter_array); $x+=3)
+    {
+        if($delimiter_array[$x+1] != "")
+        {
+            if($slen < strlen($sql))
+                $sql .= " AND";
+            
+            $sql .= " ". $delimiter_array[$x+2] ." ". $delimiter_array[$x] ." ". mysql_real_escape_string( $delimiter_array[$x+1]) ."";
+        }
+        
+    }
+    
+    
+    if( (count($radio_values)) > 0)
+    {
+        for($x = 0; $x < count($radio_values); $x++)
+        {
+            if($slen < strlen($sql))
+                $sql .= " AND";
+            
+            if( $radio_titles[$x] == "distinguished")
+            {
+                if($radio_values[$x] == "true")
+                {
+                    $sql .= " ". $radio_titles[$x] ." IS NULL";
+                }
+                else
+                {
+                    $sql .= " ". $radio_titles[$x] ." IS NOT NULL";
+                }
+            }
+            else
+            {
+                if($radio_values[$x] == "true")
+                {
+                    $sql .= " ". $radio_titles[$x] ." != 'false'";
+                }
+                else
+                {
+                    $sql .= " ". $radio_titles[$x] ." = 'false'";
+                }
+            }
+        }
     }
     
     $load_number = 100*$load_counter;

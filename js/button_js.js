@@ -10,7 +10,7 @@ $(document).ready(function() {
     var $currentDiv = $(".start");
 
 
-    $("#radio_data input[type='radio']").click(function() {
+    $("input[type='radio']").click(function() {
 
         var name = $(this)[0].name;
         if( $(this).data("waschecked") == true){
@@ -21,9 +21,9 @@ $(document).ready(function() {
             $(this).data("waschecked", true);
         }
 
-        $(this).next("input[name='" + name + "']").data("waschecked", false);
+        $(this).parent().next().children().data("waschecked", false);
+        $(this).parent().prev().children().data("waschecked", false);
 
-        alert( $(this).parent().find("input")[0].value);
 
     });
 
@@ -31,6 +31,7 @@ $(document).ready(function() {
         $("#searchfields").toggle();
         $("#show_searchfields").show();
         document.getElementById("table_contents").style.marginTop="55px";
+        $("#mover_div").prependTo("#move_spot");
 
     });
 
@@ -38,6 +39,7 @@ $(document).ready(function() {
         $("#searchfields").toggle();
         $("#show_searchfields").hide();
         document.getElementById("table_contents").style.marginTop="360px";
+        $("#mover_div").prependTo("#original_div");
 
     });
 
@@ -138,20 +140,24 @@ $(document).ready(function() {
         var $str = $("form#getInfo").serialize();
         var $str2 = $("form#getInfo2").serialize();
         var $str3 = $("form#getInfo3").serialize();
+        var $str4 = $("form#limiter_options").serialize();
+        var $str5 = $("form#radio_options").serialize();
         console.log($str);
         console.log($str2);
         console.log($str3);
+        console.log($str4);
+        console.log($str5);
 
         $count = 1;
 
-        create_table($(this), $str, $str2, $str3, $count);
+        create_table($(this), $str, $str2, $str3, $str4, $str5, $count);
 
 
 
         $("#load_button").unbind().click("submit", function () {
             $count += 1;
             console.log($str + " " + $str2 + " " + $str3 + " " + $count);
-            create_table($(this), $str, $str2, $str3, $count);
+            create_table($(this), $str, $str2, $str3, $str4, $str5, $count);
         });
 
     });
@@ -165,12 +171,12 @@ $(document).ready(function() {
     });
 
 
-    function create_table($this, $str, $str2, $str3, $count) {
+    function create_table($this, $str, $str2, $str3, $str4, $str5, $count) {
         $this.button("loading");
         $.ajax({
             type : "POST",
             url : "./search_engine.php",
-            data : { keyword_data : $str, feature_data : $str2, numerical_data : $str3, load_counter : $count},
+            data : { keyword_data : $str, feature_data : $str2, numerical_data : $str3, load_counter : $count, delimiter_data : $str4, radio_data : $str5},
             dataType : "json",
 
             success : function(result) {
