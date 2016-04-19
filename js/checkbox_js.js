@@ -11,8 +11,8 @@ $(document).ready(function() {
         var leftOffset2 = parseInt($("#loader_section").css("left"));
         var leftOffset = parseInt($("#fieldholder").css("left"));
         var maxScrollLeft = elmnt.scrollWidth;
-        console.log(maxScrollLeft);
-        console.log(leftOffset);
+        //console.log(maxScrollLeft);
+        //console.log(leftOffset);
             $("#fieldholder").css({"left": $(this).scrollLeft() + leftOffset});
             $("#loader_section").css({"left": $(this).scrollLeft() + leftOffset2});
 

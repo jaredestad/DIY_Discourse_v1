@@ -256,8 +256,8 @@
     
     
     mysql_select_db('reddit');
-    mysql_set_charset('utf8', $conn);
-    mysql_query("SET NAMES utf8");
+    mysql_set_charset('utf8mb4', $conn);
+    mysql_query("SET NAMES utf8mb4");
     $result = mysql_query($sql, $conn);
     
     
