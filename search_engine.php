@@ -226,11 +226,11 @@
             {
                 if($radio_values[$x] == "true")
                 {
-                    $sql .= " ". $radio_titles[$x] ." IS NULL";
+                    $sql .= " ". $radio_titles[$x] ." = 'null'";
                 }
                 else
                 {
-                    $sql .= " ". $radio_titles[$x] ." IS NOT NULL";
+                    $sql .= " ". $radio_titles[$x] ." != 'null'";
                 }
             }
             else
