@@ -89,7 +89,7 @@
             
             if($keyword_array[$x+2] == "Keyword")
             {
-                    $sql .= " (body LIKE '% " . mysql_real_escape_string( $keyword_array[$x+1] ) . " %' OR body LIKE '" . mysql_real_escape_string( $keyword_array[$x+1] ) . "%' OR body LIKE '% " .  mysql_real_escape_string( $keyword_array[$x+1] ) . "')";
+                    $sql .= " (body LIKE '% " . mysql_real_escape_string( $keyword_array[$x+1] ) . " %' OR body LIKE '" . mysql_real_escape_string( $keyword_array[$x+1] ) . " %' OR body LIKE '% " .  mysql_real_escape_string( $keyword_array[$x+1] ) . "')";
             }
             else if($keyword_array[$x+2] == "Tag")
             {

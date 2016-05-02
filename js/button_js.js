@@ -82,6 +82,11 @@ $(document).ready(function() {
         $("#comments_table2").empty();
         $("#loader_section").hide();
         $("#table_contents").hide();
+        $("#radio_data input[type='radio']").each(function() {
+            $(this).data("waschecked", false);
+            $(this).prop("checked", false);
+
+        });
     });
 
 

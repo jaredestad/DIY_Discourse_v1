@@ -46,6 +46,8 @@ public class reddit_json_parse
             if( ch == '{')
             {
                 String[] array = parseJson(reader, ch);
+                
+                
                 array[10] = unslashUnicode(array[10]);
                 int wordcount = wordcount(array[10]);
                 int longwordcount = longwordcount(array[10]);
@@ -61,7 +63,7 @@ public class reddit_json_parse
                 
                 int[] numbers = {wordcount, longwordcount, sentencecount, lix};
                 
-                mysql_handler(array, numbers);
+               mysql_handler(array, numbers);
                 
                 
                 
