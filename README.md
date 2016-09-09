@@ -9,7 +9,7 @@ The website allows users to search through this dataset of comments based on a v
 
 Check out the website's [about page](http://csgrid.org/csg/diy_discourse/about.html) for more information.
 
-Visit the website [here](http://csgrid.org/csg/diy_discourse/). \*The database is not currently active due to a permissions issue. Therefore, one cannot search through the data at this time.
+Visit the website [here](http://csgrid.org/csg/diy_discourse/). 
 
 ##Screenshots
 
