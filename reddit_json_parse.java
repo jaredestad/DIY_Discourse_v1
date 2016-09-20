@@ -14,12 +14,14 @@ import java.util.ArrayList;
 
 public class reddit_json_parse
 {
+    public static int last_count = 0;//32413291
+    //if we ran this program before and it errored before completion this number will help count lines up to where the error occurred
 
     public static void main(String[] args) throws IOException
     {
      
         Charset encoding = Charset.defaultCharset();
-        mysql_createDB();
+        //mysql_createDB();
         for(String filename : args){
             File file = new File(filename);
             fileReader(file, encoding);
@@ -40,31 +42,33 @@ public class reddit_json_parse
     private static void charReader(Reader reader) throws IOException
     {
         int r;
+        int count = 0;
         while((r = reader.read()) != -1)
         {
             char ch = (char) r;
             if( ch == '{')
             {
                 String[] array = parseJson(reader, ch);
-                
-                
-                array[10] = unslashUnicode(array[10]);
-                int wordcount = wordcount(array[10]);
-                int longwordcount = longwordcount(array[10]);
-                int sentencecount = sentencecount(array[10]);
-                int lix;
-                if(wordcount > 0 && sentencecount > 0)
+                count++;
+                if(count > last_count)
                 {
-                    lix = wordcount/sentencecount + (longwordcount * 100)/wordcount;
+                    array[10] = unslashUnicode(array[10]);
+                    int wordcount = wordcount(array[10]);
+                    int longwordcount = longwordcount(array[10]);
+                    int sentencecount = sentencecount(array[10]);
+                    int lix;
+                    if(wordcount > 0 && sentencecount > 0)
+                    {
+                        lix = wordcount/sentencecount + (longwordcount * 100)/wordcount;
+                    }
+                    else{
+                        lix = 0;
+                    }
+                    
+                    int[] numbers = {wordcount, longwordcount, sentencecount, lix};
+                    
+                    //mysql_handler(array, numbers);
                 }
-                else{
-                    lix = 0;
-                }
-                
-                int[] numbers = {wordcount, longwordcount, sentencecount, lix};
-                
-               mysql_handler(array, numbers);
-                
                 
                 
             }
@@ -337,35 +341,40 @@ public class reddit_json_parse
      */
     public static String unslashUnicode(String slashed){
         
-        ArrayList<String> pieces = new ArrayList<String>();
-        boolean hasit = false;
+        ArrayList<String> pieces = new ArrayList<String>();//array of different string parts. These will be added back to the string after characters have been converted.
+        boolean hasit = false;//confirms that string contains \\u
         
-        while(slashed.indexOf("\\u") != -1){//while there is /uXXXX in the string
+        while(slashed.indexOf("\\u") != -1){//while there is \\uXXXX or \\u in the string
             
-            if(slashed.contains("\\u")){
-                hasit = true;
-                try {
-                    String piece = (slashed.substring(0,slashed.indexOf("\\u")));//add the bit before the /uXXXX
-                    if(!(piece.equals("")))
-                        pieces.add(piece);
+            if(slashed.contains("\\u")){ //checks if string contains \\u
+                hasit = true;//sets hasit to true based on the above conditional. Testing purposes only.
+                try { //this try-catch block helps to catch a string with an unexpect \\u substring eg. \\u\\, \\users\\Computers (Yes. I have encountered strings like these.)
+                    String piece = (slashed.substring(0,slashed.indexOf("\\u")));//add the bit before the \\uXXXX. Substring from the beginning of the string up to the \\u.
+                    if(!(piece.equals("")))//checks that the piece is not empty
+                        pieces.add(piece);//add the non-empty piece to the array of string parts
                     
                     
+                    //System.out.println("pieces: " + pieces);
+                    char c = (char) Integer.parseInt(slashed.substring(slashed.indexOf("\\u")+2,slashed.indexOf("\\u")+6), 16);//parses the \\uXXXX section to the correct character. The +2 and +6 are the start and end of the section.
                     
-                    char c = (char) Integer.parseInt(slashed.substring(slashed.indexOf("\\u")+2,slashed.indexOf("\\u")+6), 16);
-                    
-                    slashed = slashed.substring(slashed.indexOf("\\u")+6,slashed.length());
+                    slashed = slashed.substring(slashed.indexOf("\\u")+6,slashed.length());//slashed (aka our string) is set to start at the end of the \\uXXXX (+6) section.
                     
                     pieces.add(c+"");//add the  unicode
                 }
                 catch(NumberFormatException e)
+                {
+                    pieces.add(slashed.substring(slashed.indexOf("\\u"), slashed.indexOf("\\u")+2));//parse out the \\u section
+                    slashed = slashed.substring(slashed.indexOf("\\u")+2,slashed.length());//string with above section cut out
+                }
+                catch(Exception e)
                 {
                     pieces.add(slashed.substring(slashed.indexOf("\\u"), slashed.indexOf("\\u")+2));
                     slashed = slashed.substring(slashed.indexOf("\\u")+2,slashed.length());
                 }
             }
             else{
-                //System.out.println("breaking");
-                break;
+                System.out.println("breaking");
+                break;//breaks loop if no \\u is found
             }
             //System.out.println("pieces :" + pieces);
             
@@ -374,13 +383,14 @@ public class reddit_json_parse
         
         
         for(String s : pieces){
-            temp = temp + s;//put humpty dumpty back together again
+            temp = temp + s;//put pieces back together in a single string
         }
-        slashed = temp + slashed;
+        slashed = temp + slashed;//finished string with unicode replaced
         
         //if(hasit == true)
             //System.out.println(slashed);
         
+        //System.out.println("pieces: " + pieces);
         return slashed;
     }
 
