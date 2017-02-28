@@ -7,9 +7,9 @@ The project was originally inspired by this [Reddit post](https://www.reddit.com
 The website allows users to search through this dataset of comments based on a variety of attributes. Users can add tags to comments to describe or classify the contents of a comment. In addition to the Reddit API comment attributes, some numerical values such as the number of words and sentences have been computed for each comment. These values are not always correct as specific formatting within the comments interferes with generating accurate values. 
 
 
-Check out the website's //[about page](http://csgrid.org/csg/diy_discourse/about.html) for more information.
+Check out the website's [about page] for more information.
 
-Visit the website //[here](http://csgrid.org/csg/diy_discourse/). 
+Visit the website [here]
 
 ##Screenshots
 
